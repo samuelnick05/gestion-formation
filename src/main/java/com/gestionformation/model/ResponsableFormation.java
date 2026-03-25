@@ -1,22 +1,25 @@
 package com.gestionformation.model;
 
+import jakarta.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
+@Table(name = "responsables_formation")
 public class ResponsableFormation extends Employe {
 
+    @Column(name = "date_nomination")
     private String dateNomination;
-    private List<DemandeFormation> demandes;
 
-    public ResponsableFormation() {
-        super();
-        this.demandes = new ArrayList<>();
-    }
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "responsable_id")
+    private List<DemandeFormation> demandes = new ArrayList<>();
+
+    public ResponsableFormation() { super(); }
 
     public ResponsableFormation(int numeroEmploye, String nom, String adresse, String dateNomination) {
         super(numeroEmploye, nom, adresse);
         this.dateNomination = dateNomination;
-        this.demandes = new ArrayList<>();
     }
 
     @Override
@@ -25,13 +28,9 @@ public class ResponsableFormation extends Employe {
         System.out.println("Responsable de formation | Nommé le: " + dateNomination);
     }
 
-    public void ajouterDemande(DemandeFormation demande) {
-        demandes.add(demande);
-    }
+    public void ajouterDemande(DemandeFormation demande) { demandes.add(demande); }
 
-    // Getters & Setters
     public String getDateNomination() { return dateNomination; }
     public void setDateNomination(String dateNomination) { this.dateNomination = dateNomination; }
-
     public List<DemandeFormation> getDemandes() { return demandes; }
 }

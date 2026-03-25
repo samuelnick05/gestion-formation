@@ -1,6 +1,6 @@
 package com.gestionformation.repository;
-import com.gestionformation.model.Formation;
+import com.gestionformation.model.Employe;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 @Repository
-public interface FormationRepository extends JpaRepository<Formation, Integer> {}
+public interface EmployeRepository extends JpaRepository<Employe, Integer> {}

@@ -1,8 +1,17 @@
 package com.gestionformation.model;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "contenus")
 public class Contenu {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "numero_contenu")
     private int numeroContenu;
+
+    @Column(nullable = false)
     private String description;
 
     public Contenu() {}
@@ -13,13 +22,11 @@ public class Contenu {
     }
 
     public void afficher() {
-        System.out.println("model.Contenu #" + numeroContenu + " : " + description);
+        System.out.println("Contenu #" + numeroContenu + " : " + description);
     }
 
-    // Getters & Setters
     public int getNumeroContenu() { return numeroContenu; }
     public void setNumeroContenu(int numeroContenu) { this.numeroContenu = numeroContenu; }
-
     public String getDescription() { return description; }
     public void setDescription(String description) { this.description = description; }
 }

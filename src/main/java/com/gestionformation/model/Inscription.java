@@ -1,11 +1,26 @@
 package com.gestionformation.model;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "inscriptions")
 public class Inscription {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_inscription")
     private int idInscription;
+
+    @Column(name = "date_inscription")
     private String dateInscription;
+
+    @Column(nullable = false)
     private String statut;
+
+    @Column(length = 500)
     private String appreciation;
+
+    @Column(name = "document")
     private String document;
 
     public Inscription() {}
@@ -18,31 +33,22 @@ public class Inscription {
 
     public void valider() {
         this.statut = "Validée";
-        System.out.println("model.Inscription #" + idInscription + " validée.");
+        System.out.println("Inscription #" + idInscription + " validée.");
     }
 
     public void annuler() {
         this.statut = "Annulée";
-        System.out.println("model.Inscription #" + idInscription + " annulée.");
+        System.out.println("Inscription #" + idInscription + " annulée.");
     }
 
-    public void afficher() {
-        System.out.println("model.Inscription #" + idInscription + " | Date: " + dateInscription + " | Statut: " + statut);
-    }
-
-    // Getters & Setters
     public int getIdInscription() { return idInscription; }
     public void setIdInscription(int idInscription) { this.idInscription = idInscription; }
-
     public String getDateInscription() { return dateInscription; }
     public void setDateInscription(String dateInscription) { this.dateInscription = dateInscription; }
-
     public String getStatut() { return statut; }
     public void setStatut(String statut) { this.statut = statut; }
-
     public String getAppreciation() { return appreciation; }
     public void setAppreciation(String appreciation) { this.appreciation = appreciation; }
-
     public String getDocument() { return document; }
     public void setDocument(String document) { this.document = document; }
 }
