@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Instruire une demande</title>
+
+    <!-- BOOTSTRAP -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- JS -->
+    <script src="../assets/js/api.js"></script>
+    <script src="../assets/js/demandes.js"></script>
+
+    <!-- TON CSS -->
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+
+<body onload="loadDemandeForInstr()" class="bg-light">
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
+    <div class="container-fluid">
+
+        <a class="navbar-brand" href="../index.html">Gestion Formation</a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="menu">
+            <ul class="navbar-nav ms-auto">
+
+                <li class="nav-item"><a class="nav-link" href="../formations/list.html">Formations</a></li>
+                <li class="nav-item"><a class="nav-link" href="../employes/list.html">Employés</a></li>
+                <li class="nav-item"><a class="nav-link" href="../sessions/list.html">Sessions</a></li>
+                <li class="nav-item"><a class="nav-link active" href="create.html">Demandes</a></li>
+                <li class="nav-item"><a class="nav-link" href="../inscriptions/inscrire.html">Inscriptions</a></li>
+
+            </ul>
+        </div>
+
+    </div>
+</nav>
+
+<!-- CONTENU -->
+<div class="container">
+
+    <h2 class="fw-bold mb-3">📝 Instruire une demande</h2>
+
+    <div class="card shadow p-4">
+
+        <form onsubmit="event.preventDefault(); instruireDemande();">
+
+            <!-- ID DEMANDE -->
+            <div class="mb-3">
+                <label class="form-label">ID Demande :</label>
+                <input type="number" id="idDemande" class="form-control" readonly>
+            </div>
+
+            <!-- ID RESPONSABLE -->
+            <div class="mb-3">
+                <label class="form-label">ID Responsable :</label>
+                <input type="number" id="responsable" class="form-control" placeholder="ex: 1" required>
+            </div>
+
+            <!-- CHECKBOX -->
+            <div class="form-check mb-3">
+                <input class="form-check-input" type="checkbox" id="accepter">
+                <label class="form-check-label">
+                    Accepter la demande
+                </label>
+            </div>
+
+            <!-- BTN -->
+            <button type="submit" class="btn btn-warning w-100">
+                ✅ Valider l'instruction
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+</body>
+</html>
