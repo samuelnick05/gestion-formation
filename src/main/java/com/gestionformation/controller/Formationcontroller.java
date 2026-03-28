@@ -24,6 +24,12 @@ public class Formationcontroller {
     // CATALOGUE & SESSIONS  —  GET
     // ══════════════════════════════════════════════════════════════
 
+    // GET /api/demandes  →  retourne toutes les demandes
+    @GetMapping("/demandes")
+    public ResponseEntity<List<DemandeFormation>> getToutesDemandes() {
+        return ResponseEntity.ok(service.toutesLesDemandes());
+    }
+
     // GET /api/formations  →  retourne toutes les formations
     @GetMapping("/formations")
     public ResponseEntity<List<Formation>> getCatalogue() {
